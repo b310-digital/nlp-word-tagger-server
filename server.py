@@ -11,7 +11,7 @@ def convert_tag_to_obj(tag_array):
   return {
     "original": tag_array[0],
     "normalized": tag_array[1],
-    "word_class": tag_array[2]
+    "wordClass": tag_array[2]
   }
 
 class NLPWordTagger:
@@ -28,7 +28,7 @@ class NLPWordTagger:
 class NLPWordTaggerServer(object):
     @cherrypy.expose
     @cherrypy.tools.json_out()
-    def tag_words(self, lang="en"):
+    def tagged_words(self, lang="en"):
         data = str(cherrypy.request.body.read(), "utf-8")
         tagger = NLPWordTagger(lang)
         words = tagger.tag_words_from_string(data)
