@@ -10,4 +10,7 @@ FROM base as development
 FROM base as production
 
 USER nobody
+# create working directory that nobody can download to:
+WORKDIR /app-nltk
+
 CMD ["python3", "/app/server.py"]

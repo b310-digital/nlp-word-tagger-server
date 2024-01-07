@@ -3,7 +3,7 @@ import cherrypy
 import os
 from HanTa import HanoverTagger as ht
 
-nltk.download("punkt")
+nltk.download("punkt", "/app-nltk/")
 
 def convert_tag_to_obj(tag_array):
   if (len(tag_array) != 3): return {} 
