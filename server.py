@@ -4,6 +4,7 @@ import os
 from HanTa import HanoverTagger as ht
 
 nltk.download("punkt", "/app-nltk/")
+nltk.download("punkt_tab", "/app-nltk/")
 
 def convert_tag_to_obj(tag_array):
   if (len(tag_array) != 3): return {} 

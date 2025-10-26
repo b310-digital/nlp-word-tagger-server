@@ -1,4 +1,4 @@
-nltk
-HanTa
-numpy
-cherrypy
+nltk==3.9.2
+HanTa==1.1.2
+numpy==2.3.4
+cherrypy==18.10.0
