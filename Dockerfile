@@ -1,4 +1,4 @@
-FROM python:3.12.1-slim-bullseye as base
+FROM python:3.14.0-slim-trixie AS base
 
 WORKDIR /app
 
@@ -6,8 +6,9 @@ COPY requirements.txt /app
 COPY server.py /app
 RUN pip3 install --no-cache  -r requirements.txt
 
-FROM base as development
-FROM base as production
+FROM base AS development
+FROM base AS production
+ENV NLTK_DATA=/app-nltk
 
 USER nobody
 # create working directory that nobody can download to:
