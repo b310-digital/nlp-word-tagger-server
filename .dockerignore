@@ -1,0 +1,6 @@
+# Ignore everything by default
+*
+
+# Allow explicitly
+!server.py
+!requirements.txt

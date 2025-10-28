@@ -1,10 +1,10 @@
-import nltk
 import cherrypy
 import os
+import spacy
 from HanTa import HanoverTagger as ht
 
-nltk.download("punkt", "/app-nltk/")
-nltk.download("punkt_tab", "/app-nltk/")
+nlp_en = spacy.load("en_core_web_sm")
+nlp_de = spacy.load("de_core_news_sm")
 
 def convert_tag_to_obj(tag_array):
   if (len(tag_array) != 3): return {} 
@@ -19,10 +19,18 @@ class NLPWordTagger:
   def __init__(self, lang="en"):
     hanta_model = "morphmodel_ger.pgz" if lang == "de" else "morphmodel_en.pgz"
     self.tagger = ht.HanoverTagger(hanta_model)
+    self.lang = lang
 
   def tag_words_from_string(self, string):
-    words = nltk.word_tokenize(string)
-    tags = self.tagger.tag_sent(words)
+    if self.lang == "en":
+       doc = nlp_en(string)
+    elif self.lang == "de":
+       doc = nlp_de(string)
+    else:
+      return {"error": "Unsupported language"}
+    
+    tokens = [token.text for token in doc]
+    tags = self.tagger.tag_sent(tokens)
     mapped_tags = list(map(convert_tag_to_obj, tags))
     return mapped_tags
 
