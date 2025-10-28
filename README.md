@@ -82,3 +82,4 @@ Example response for a german query:
 ## Acknowledgements
 
 - HanTa: https://github.com/wartaal/HanTa
+- NLTK: https://github.com/nltk/nltk
