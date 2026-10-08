@@ -1,3 +1,4 @@
 spacy==3.8.7
 HanTa==1.1.2
 cherrypy==18.10.0
+click==8.5.0
